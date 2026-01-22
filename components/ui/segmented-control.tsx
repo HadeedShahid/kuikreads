@@ -30,7 +30,7 @@ export function SegmentedControl({
             onPress={() => onSelect(index)}
             className={cn(
               "flex-1 items-center justify-center rounded-lg",
-              isSelected && "bg-white shadow-sm"
+              isSelected && "bg-white"
             )}
             style={
               isSelected

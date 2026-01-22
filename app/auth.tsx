@@ -37,6 +37,10 @@ export default function AuthScreen() {
     console.log("Continue without account");
   };
 
+  const handleForgotPassword = () => {
+    console.log("Forgot password");
+  };
+
   return (
     <SafeAreaView className="flex-1 bg-background">
       <ScrollView
@@ -70,6 +74,7 @@ export default function AuthScreen() {
             onEmailChange={setEmail}
             onPasswordChange={setPassword}
             onSubmit={handleSubmit}
+            onForgotPassword={handleForgotPassword}
             isLoading={isLoading}
           />
 
