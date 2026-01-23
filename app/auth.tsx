@@ -149,13 +149,13 @@ export default function AuthScreen() {
           />
 
           {/* Divider */}
-          <Divider text="or" className="mb-8" />
+          {/* <Divider text="or" className="mb-8" /> */}
 
           {/* Social Auth */}
-          <SocialAuthButtons
+          {/* <SocialAuthButtons
             onGooglePress={handleGooglePress}
             onApplePress={handleApplePress}
-          />
+          /> */}
 
           {/* Footer */}
           {/* <LegalFooter
