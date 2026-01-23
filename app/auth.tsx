@@ -120,7 +120,7 @@ export default function AuthScreen() {
         {/* Header */}
         <Header
           title="KuikReads"
-          onBackPress={() => console.log("Back pressed")}
+          onBackPress={() => router.back()}
         />
 
         {/* Main Content */}

@@ -46,11 +46,11 @@ export default function RootLayout() {
   useEffect(() => {
     if (!isAuthReady) return;
 
-    const inAuthGroup = segments[0] === "auth";
+    const inAuthFlow = segments[0] === "auth" || segments[0] === "welcome";
 
-    if (!session && !inAuthGroup) {
-      router.replace("/auth");
-    } else if (session && inAuthGroup) {
+    if (!session && !inAuthFlow) {
+      router.replace("/welcome");
+    } else if (session && inAuthFlow) {
       router.replace("/");
     }
   }, [session, segments, isAuthReady]);
@@ -73,6 +73,7 @@ export default function RootLayout() {
     <SafeAreaProvider>
       <Stack screenOptions={{ headerShown: false }}>
         <Stack.Screen name="index" />
+        <Stack.Screen name="welcome" />
         <Stack.Screen name="auth" />
       </Stack>
     </SafeAreaProvider>
