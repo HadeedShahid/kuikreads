@@ -1,5 +1,5 @@
-import { Stack } from "expo-router";
-import { useEffect } from "react";
+import { Stack, router, useSegments } from "expo-router";
+import { useEffect, useState } from "react";
 import { View, ActivityIndicator } from "react-native";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import {
@@ -11,11 +11,17 @@ import {
   Newsreader_400Regular_Italic,
 } from "@expo-google-fonts/newsreader";
 import * as SplashScreen from "expo-splash-screen";
+import { Session } from "@supabase/supabase-js";
+import { supabase } from "@/lib/supabase";
 import "../global.css";
 
 SplashScreen.preventAutoHideAsync();
 
 export default function RootLayout() {
+  const [session, setSession] = useState<Session | null>(null);
+  const [isAuthReady, setIsAuthReady] = useState(false);
+  const segments = useSegments();
+
   const [fontsLoaded] = useFonts({
     Newsreader_400Regular,
     Newsreader_500Medium,
@@ -25,12 +31,37 @@ export default function RootLayout() {
   });
 
   useEffect(() => {
-    if (fontsLoaded) {
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      setSession(session);
+      setIsAuthReady(true);
+    });
+
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
+      setSession(session);
+    });
+
+    return () => subscription.unsubscribe();
+  }, []);
+
+  useEffect(() => {
+    if (!isAuthReady) return;
+
+    const inAuthGroup = segments[0] === "auth";
+
+    if (!session && !inAuthGroup) {
+      router.replace("/auth");
+    } else if (session && inAuthGroup) {
+      router.replace("/");
+    }
+  }, [session, segments, isAuthReady]);
+
+  useEffect(() => {
+    if (fontsLoaded && isAuthReady) {
       SplashScreen.hideAsync();
     }
-  }, [fontsLoaded]);
+  }, [fontsLoaded, isAuthReady]);
 
-  if (!fontsLoaded) {
+  if (!fontsLoaded || !isAuthReady) {
     return (
       <View className="flex-1 items-center justify-center bg-background">
         <ActivityIndicator size="large" color="#ec9213" />

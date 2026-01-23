@@ -1,6 +1,12 @@
-import { useEffect } from "react";
-import { View, Pressable, LayoutAnimation, Platform, UIManager } from "react-native";
 import { cn } from "@/lib/cn";
+import { useEffect } from "react";
+import {
+  LayoutAnimation,
+  Platform,
+  Pressable,
+  UIManager,
+  View,
+} from "react-native";
 import { Button } from "./ui/button";
 import { Card } from "./ui/card";
 import { Input } from "./ui/input";
@@ -8,14 +14,19 @@ import { PasswordInput } from "./ui/password-input";
 import { Text } from "./ui/text";
 
 // Enable LayoutAnimation on Android
-if (Platform.OS === "android" && UIManager.setLayoutAnimationEnabledExperimental) {
+if (
+  Platform.OS === "android" &&
+  UIManager.setLayoutAnimationEnabledExperimental
+) {
   UIManager.setLayoutAnimationEnabledExperimental(true);
 }
 
 interface AuthFormProps {
   mode: "signup" | "login";
+  username?: string;
   email: string;
   password: string;
+  onUsernameChange?: (value: string) => void;
   onEmailChange: (value: string) => void;
   onPasswordChange: (value: string) => void;
   onSubmit: () => void;
@@ -26,8 +37,10 @@ interface AuthFormProps {
 
 export function AuthForm({
   mode,
+  username,
   email,
   password,
+  onUsernameChange,
   onEmailChange,
   onPasswordChange,
   onSubmit,
@@ -64,6 +77,17 @@ export function AuthForm({
   return (
     <Card className={cn("mb-8", className)}>
       <View className="gap-5">
+        {isSignup && (
+          <Input
+            label="What should we call you?"
+            placeholder="Enter your name"
+            value={username}
+            onChangeText={onUsernameChange}
+            autoCapitalize="words"
+            autoComplete="username"
+          />
+        )}
+
         <Input
           label={copy.emailLabel}
           placeholder={copy.emailPlaceholder}
@@ -95,10 +119,10 @@ export function AuthForm({
         <Button
           variant="primary"
           onPress={onSubmit}
-          disabled={isLoading}
+          loading={isLoading}
           className={isSignup ? "mt-2" : ""}
         >
-          {isLoading ? "Loading..." : copy.buttonText}
+          {copy.buttonText}
         </Button>
       </View>
     </Card>

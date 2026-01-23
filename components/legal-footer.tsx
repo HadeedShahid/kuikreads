@@ -1,5 +1,5 @@
-import { View, Pressable } from "react-native";
 import { cn } from "@/lib/cn";
+import { Pressable, View } from "react-native";
 import { Text } from "./ui/text";
 
 interface LegalFooterProps {
@@ -23,19 +23,11 @@ export function LegalFooter({
 
       <Text variant="caption" className="text-center px-8 leading-relaxed">
         By creating an account, you agree to our{" "}
-        <Text
-          variant="caption"
-          className="underline"
-          onPress={onTermsPress}
-        >
+        <Text variant="caption" className="underline" onPress={onTermsPress}>
           Terms of Service
         </Text>{" "}
         and{" "}
-        <Text
-          variant="caption"
-          className="underline"
-          onPress={onPrivacyPress}
-        >
+        <Text variant="caption" className="underline" onPress={onPrivacyPress}>
           Privacy Policy
         </Text>
         .
