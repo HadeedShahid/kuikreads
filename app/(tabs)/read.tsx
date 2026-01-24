@@ -7,9 +7,11 @@ import {
   RSVPWordDisplay,
   PlaybackControls,
   SpeedSettingsModal,
+  AppearanceSettingsModal,
   Badge,
   ToolbarButton,
 } from "@/components";
+import type { ReadingTheme } from "@/components";
 
 // Sample text for testing
 const SAMPLE_TEXT = `The Great Gatsby is a 1925 novel by American writer F. Scott Fitzgerald. Set in the Jazz Age on Long Island, near New York City, the novel depicts first-person narrator Nick Carraway's interactions with mysterious millionaire Jay Gatsby and Gatsby's obsession to reunite with his former lover, Daisy Buchanan.`;
@@ -25,6 +27,21 @@ export default function ReadScreen() {
   const [isPlaying, setIsPlaying] = useState(false);
   const [wpm, setWpm] = useState(250);
   const [showSpeedSettings, setShowSpeedSettings] = useState(false);
+  const [showAppearanceSettings, setShowAppearanceSettings] = useState(false);
+
+  // Appearance settings
+  const [theme, setTheme] = useState<ReadingTheme>("light");
+  const [fontSize, setFontSize] = useState(40);
+  const [showORPHighlight, setShowORPHighlight] = useState(true);
+  const [showFocusGuide, setShowFocusGuide] = useState(true);
+
+  // Theme colors
+  const themeColors = {
+    light: { bg: "#FAF9F7", text: "#181511", muted: "#897961" },
+    dark: { bg: "#1a1a1a", text: "#ffffff", muted: "#a0a0a0" },
+    sepia: { bg: "#f4ecd8", text: "#5c4b37", muted: "#8b7355" },
+  };
+  const currentThemeColors = themeColors[theme];
 
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
@@ -112,7 +129,7 @@ export default function ReadScreen() {
   };
 
   const handleAppearancePress = () => {
-    console.log("Appearance settings");
+    setShowAppearanceSettings(true);
   };
 
   const handleSpeedPress = () => {
@@ -132,8 +149,18 @@ export default function ReadScreen() {
       />
 
       {/* Main Reading Area */}
-      <View className="flex-1 items-center justify-center px-2" style={{ overflow: "visible" }}>
-        <RSVPWordDisplay word={currentWord} fontSize={40} />
+      <View
+        className="flex-1 items-center justify-center px-2"
+        style={{ overflow: "visible", backgroundColor: currentThemeColors.bg }}
+      >
+        <RSVPWordDisplay
+          word={currentWord}
+          fontSize={fontSize}
+          showORPHighlight={showORPHighlight}
+          showFocusGuide={showFocusGuide}
+          textColor={currentThemeColors.text}
+          mutedColor={currentThemeColors.muted}
+        />
 
         {/* WPM Badge */}
         <View className="mt-4">
@@ -176,6 +203,20 @@ export default function ReadScreen() {
         onClose={() => setShowSpeedSettings(false)}
         currentWpm={wpm}
         onWpmChange={setWpm}
+      />
+
+      {/* Appearance Settings Modal */}
+      <AppearanceSettingsModal
+        visible={showAppearanceSettings}
+        onClose={() => setShowAppearanceSettings(false)}
+        theme={theme}
+        onThemeChange={setTheme}
+        fontSize={fontSize}
+        onFontSizeChange={setFontSize}
+        showORPHighlight={showORPHighlight}
+        onORPHighlightChange={setShowORPHighlight}
+        showFocusGuide={showFocusGuide}
+        onFocusGuideChange={setShowFocusGuide}
       />
     </SafeAreaView>
   );

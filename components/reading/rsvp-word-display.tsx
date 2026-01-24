@@ -9,6 +9,10 @@ interface RSVPWordDisplayProps {
   showORPHighlight?: boolean;
   /** Whether to show the focus guide line */
   showFocusGuide?: boolean;
+  /** Text color for the word */
+  textColor?: string;
+  /** Color for muted/empty state text */
+  mutedColor?: string;
 }
 
 /**
@@ -43,11 +47,13 @@ export function RSVPWordDisplay({
   fontSize = 40,
   showORPHighlight = true,
   showFocusGuide = true,
+  textColor = "#181511",
+  mutedColor = "#897961",
 }: RSVPWordDisplayProps) {
   const textStyle = {
     fontSize,
     fontWeight: "700" as const,
-    color: "#181511",
+    color: textColor,
     letterSpacing: -0.5,
   };
 
@@ -68,7 +74,7 @@ export function RSVPWordDisplay({
             }}
           />
         )}
-        <Text style={{ ...textStyle, color: "#897961" }}>—</Text>
+        <Text style={{ ...textStyle, color: mutedColor }}>—</Text>
       </View>
     );
   }
