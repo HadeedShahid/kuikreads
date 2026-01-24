@@ -51,7 +51,7 @@ export default function RootLayout() {
     if (!session && !inAuthFlow) {
       router.replace("/welcome");
     } else if (session && (segments[0] === "auth" || segments[0] === "welcome")) {
-      router.replace("/");
+      router.replace("/(tabs)/read");
     }
   }, [session, segments, isAuthReady]);
 
@@ -73,6 +73,7 @@ export default function RootLayout() {
     <SafeAreaProvider>
       <Stack screenOptions={{ headerShown: false }}>
         <Stack.Screen name="index" />
+        <Stack.Screen name="(tabs)" />
         <Stack.Screen name="welcome" />
         <Stack.Screen name="auth" />
         <Stack.Screen name="onboarding" />

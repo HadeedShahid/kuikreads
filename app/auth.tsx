@@ -74,8 +74,8 @@ export default function AuthScreen() {
         if (profileError) {
           Alert.alert("Error", profileError.message);
         } else {
-          // Navigate to onboarding after successful signup
-          router.replace("/onboarding/reading-goal");
+          // Navigate to main app after successful signup
+          router.replace("/(tabs)/read");
         }
       }
     } else {
@@ -87,7 +87,7 @@ export default function AuthScreen() {
       if (error) {
         Alert.alert("Error", error.message);
       } else {
-        router.replace("/");
+        router.replace("/(tabs)/read");
       }
     }
 

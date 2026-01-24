@@ -44,10 +44,11 @@ export default function ReadingGoalScreen() {
   const [dailyTime, setDailyTime] = useState("20");
 
   const handleContinue = () => {
-    // TODO: Save reading goal preferences
+    // TODO: Save reading goal preferences to async storage for later
     console.log("Selected goal:", selectedGoal);
     console.log("Daily time:", dailyTime);
-    router.replace("/");
+    // Navigate to auth to create account
+    router.replace("/auth");
   };
 
   return (

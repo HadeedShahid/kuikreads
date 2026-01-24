@@ -8,3 +8,7 @@ export { SegmentedControl } from "./segmented-control";
 export { ProgressDots } from "./progress-dots";
 export { RadioCard } from "./radio-card";
 export { Select } from "./select";
+export { IconButton } from "./icon-button";
+export { Badge } from "./badge";
+export { ToolbarButton } from "./toolbar-button";
+export { TabBar } from "./tab-bar";
