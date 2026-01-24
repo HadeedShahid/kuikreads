@@ -1,0 +1,151 @@
+<!doctype html>
+
+<html class="light" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Welcome to KuikReads</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              primary: "#ec9c13",
+              "accent-terracotta": "#bf5b30",
+              "background-light": "#fdfcf7", // Parchment-like cream
+              "background-dark": "#221b10",
+            },
+            fontFamily: {
+              display: ["Plus Jakarta Sans", "sans-serif"],
+            },
+            borderRadius: {
+              DEFAULT: "0.5rem",
+              lg: "1rem",
+              xl: "1.5rem",
+              full: "9999px",
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      body {
+        min-height: max(884px, 100dvh);
+      }
+    </style>
+  </head>
+  <body
+    class="bg-background-light dark:bg-background-dark font-display text-[#181511] dark:text-[#f8f7f6]"
+  >
+    <!-- Main Mobile Container -->
+    <div
+      class="relative flex min-h-screen w-full max-w-[480px] mx-auto flex-col overflow-x-hidden bg-gradient-to-b from-[#FFFDF5] to-[#F5E6D3] dark:from-[#2a2215] dark:to-[#1a140c]"
+    >
+      <!-- Logo and Branding Section -->
+      <div class="flex flex-col items-center pt-12 px-6">
+        <!-- Stylized Logo -->
+        <div
+          class="w-20 h-20 bg-gradient-to-br from-primary to-accent-terracotta rounded-xl flex items-center justify-center shadow-lg mb-4"
+        >
+          <span
+            class="material-symbols-outlined text-white text-5xl"
+            style="font-variation-settings: &quot;FILL&quot; 1"
+            >auto_stories</span
+          >
+          <div
+            class="absolute translate-x-4 translate-y-4 bg-white dark:bg-background-dark rounded-full p-1 shadow-sm"
+          >
+            <span
+              class="material-symbols-outlined text-primary text-xl font-bold"
+              >trending_flat</span
+            >
+          </div>
+        </div>
+        <h1
+          class="text-[#181511] dark:text-white text-3xl font-extrabold tracking-tight text-center"
+        >
+          KuikReads
+        </h1>
+        <p
+          class="text-[#181511]/70 dark:text-white/70 text-base font-medium mt-1"
+        >
+          Read Faster. Finish More.
+        </p>
+      </div>
+      <!-- Hero Illustration -->
+      <div class="flex-grow flex items-center justify-center px-8 py-10">
+        <div class="relative w-full aspect-square max-w-[320px] @container">
+          <!-- Main Illustration Placeholder -->
+          <div
+            class="w-full h-full bg-center bg-no-repeat bg-cover rounded-3xl shadow-sm border-4 border-white/50 dark:border-white/10"
+            data-alt="Illustration of a person reading comfortably in a cozy armchair"
+            style="
+              background-image: url(&quot;https://lh3.googleusercontent.com/aida-public/AB6AXuDUyByAHf9_xYjnKo3gvEiEZVgwkaRxP7vy3ftTE9VyIzC1IJ-rq0dgw6urEGcMORMeTHxhuPlViS2bL-fRvnuTGfWDMqZnFDpusYV0Pf4Z6qFQEq0Kjofran1qcxoWQ1oyBn8Djk_d8NSxcfnKrlaO01UdDT2Zm0fUVYlwtk0S5XtUANtt0G378WsiMMas5JevvR8PRlGT2dWDV7u3D-ysSmEk2J_x2dp0rt-No7SXf1RJu8Mo---PplwPP2pyEPKim54aSWkqLq8&quot;);
+            "
+          ></div>
+          <!-- Decorative Elements -->
+          <div class="absolute -top-4 -right-4 bg-primary/20 p-3 rounded-full">
+            <span class="material-symbols-outlined text-primary text-2xl"
+              >menu_book</span
+            >
+          </div>
+          <div
+            class="absolute -bottom-2 -left-4 bg-accent-terracotta/20 p-4 rounded-full"
+          >
+            <span
+              class="material-symbols-outlined text-accent-terracotta text-2xl"
+              >timer</span
+            >
+          </div>
+        </div>
+      </div>
+      <!-- Footer Actions Section -->
+      <div class="flex flex-col gap-4 px-6 pb-12">
+        <!-- Philosophy/Intro Text -->
+        <p
+          class="text-center text-[#181511]/60 dark:text-white/60 text-sm leading-relaxed px-4 mb-2"
+        >
+          Join thousands of readers who are mastering their lists with our
+          focus-first approach.
+        </p>
+        <!-- Primary Action -->
+        <button
+          class="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-14 px-5 bg-primary text-[#181511] text-lg font-bold leading-normal tracking-wide shadow-md active:scale-[0.98] transition-all"
+        >
+          <span class="truncate">Get Started</span>
+        </button>
+        <!-- Secondary/Tertiary Actions -->
+        <div class="flex flex-col items-center gap-4 mt-2">
+          <button
+            class="text-[#181511]/80 dark:text-white/80 text-sm font-semibold hover:underline"
+          >
+            Already have an account? Sign In
+          </button>
+          <div class="flex items-center gap-1 opacity-40">
+            <span class="h-px w-8 bg-current"></span>
+            <button class="text-xs font-bold tracking-widest uppercase px-2">
+              Skip
+            </button>
+            <span class="h-px w-8 bg-current"></span>
+          </div>
+        </div>
+      </div>
+      <!-- iOS Home Indicator Spacing -->
+      <div class="h-8"></div>
+    </div>
+  </body>
+</html>

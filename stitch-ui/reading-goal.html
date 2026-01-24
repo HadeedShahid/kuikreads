@@ -1,0 +1,276 @@
+<!doctype html>
+
+<html class="light" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>KuikReads - Set Your Reading Goal</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              primary: "#eea02b",
+              "background-light": "#f8f7f6",
+              "background-dark": "#221b10",
+            },
+            fontFamily: {
+              display: ["Lexend", "sans-serif"],
+            },
+            borderRadius: {
+              DEFAULT: "0.5rem",
+              lg: "1rem",
+              xl: "1.5rem",
+              full: "9999px",
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      body {
+        font-family: "Lexend", sans-serif;
+      }
+      .material-symbols-outlined {
+        font-variation-settings:
+          "FILL" 0,
+          "wght" 400,
+          "GRAD" 0,
+          "opsz" 24;
+      }
+      .custom-checkbox-tick {
+        --checkbox-tick-svg: url("data:image/svg+xml,%3csvg viewBox=%270 0 16 16%27 fill=%27white%27 xmlns=%27http://www.w3.org/2000/svg%27%3e%3cpath d=%27M12.207 4.793a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0l-2-2a1 1 0 011.414-1.414L6.5 9.086l4.293-4.293a1 1 0 011.414 0z%27/%3e%3c/svg%3e");
+      }
+    </style>
+    <style>
+      body {
+        min-height: max(884px, 100dvh);
+      }
+    </style>
+  </head>
+  <body
+    class="bg-background-light dark:bg-background-dark text-[#181511] dark:text-white min-h-screen flex flex-col items-center"
+  >
+    <div
+      class="relative flex h-full min-h-screen w-full max-w-[430px] flex-col bg-background-light dark:bg-background-dark overflow-x-hidden shadow-2xl"
+    >
+      <!-- Progress Indicators -->
+      <div class="flex w-full flex-row items-center justify-center gap-3 py-8">
+        <div class="h-2 w-2 rounded-full bg-[#e6e1db] dark:bg-[#3d3428]"></div>
+        <div class="h-2 w-2 rounded-full bg-[#e6e1db] dark:bg-[#3d3428]"></div>
+        <div class="h-2 w-6 rounded-full bg-primary"></div>
+      </div>
+      <!-- Headline -->
+      <div class="px-6">
+        <h1
+          class="text-[#181511] dark:text-[#f4f3f0] tracking-tight text-[32px] font-bold leading-tight text-center pb-2"
+        >
+          Set Your Reading Goal
+        </h1>
+        <p
+          class="text-[#897961] dark:text-[#b4a691] text-base text-center font-normal mb-8"
+        >
+          Personalize your journey with KuikReads
+        </p>
+      </div>
+      <!-- Reading Goals List -->
+      <div class="flex flex-col gap-3 px-4">
+        <!-- Goal 1 -->
+        <div
+          class="flex items-center gap-4 bg-white dark:bg-[#2d251a] px-4 min-h-[88px] py-3 justify-between rounded-xl border-2 border-transparent hover:border-primary/30 transition-all cursor-pointer shadow-sm"
+        >
+          <div class="flex items-center gap-4">
+            <div
+              class="text-[#181511] dark:text-primary flex items-center justify-center rounded-lg bg-[#f4f3f0] dark:bg-[#3d3428] shrink-0 size-12"
+            >
+              <span class="material-symbols-outlined text-[24px]">book_5</span>
+            </div>
+            <div class="flex flex-col justify-center">
+              <p
+                class="text-[#181511] dark:text-white text-base font-semibold leading-tight"
+              >
+                Read 50 books
+              </p>
+              <p
+                class="text-[#897961] dark:text-[#b4a691] text-sm font-normal leading-normal"
+              >
+                Complete a challenge this year.
+              </p>
+            </div>
+          </div>
+          <div class="shrink-0 custom-checkbox-tick">
+            <div class="flex size-7 items-center justify-center">
+              <input
+                class="h-6 w-6 rounded-full border-[#e6e1db] border-2 bg-transparent text-primary checked:bg-primary checked:border-primary focus:ring-0 focus:ring-offset-0 focus:border-primary focus:outline-none transition-colors"
+                name="goal"
+                type="radio"
+              />
+            </div>
+          </div>
+        </div>
+        <!-- Goal 2 -->
+        <div
+          class="flex items-center gap-4 bg-white dark:bg-[#2d251a] px-4 min-h-[88px] py-3 justify-between rounded-xl border-2 border-transparent hover:border-primary/30 transition-all cursor-pointer shadow-sm"
+        >
+          <div class="flex items-center gap-4">
+            <div
+              class="text-[#181511] dark:text-primary flex items-center justify-center rounded-lg bg-[#f4f3f0] dark:bg-[#3d3428] shrink-0 size-12"
+            >
+              <span class="material-symbols-outlined text-[24px]"
+                >work_outline</span
+              >
+            </div>
+            <div class="flex flex-col justify-center">
+              <p
+                class="text-[#181511] dark:text-white text-base font-semibold leading-tight"
+              >
+                Read faster for work
+              </p>
+              <p
+                class="text-[#897961] dark:text-[#b4a691] text-sm font-normal leading-normal"
+              >
+                Get through docs in half the time.
+              </p>
+            </div>
+          </div>
+          <div class="shrink-0 custom-checkbox-tick">
+            <div class="flex size-7 items-center justify-center">
+              <input
+                class="h-6 w-6 rounded-full border-[#e6e1db] border-2 bg-transparent text-primary checked:bg-primary checked:border-primary focus:ring-0 focus:ring-offset-0 focus:border-primary focus:outline-none transition-colors"
+                name="goal"
+                type="radio"
+              />
+            </div>
+          </div>
+        </div>
+        <!-- Goal 3 (Selected by default) -->
+        <div
+          class="flex items-center gap-4 bg-white dark:bg-[#2d251a] px-4 min-h-[88px] py-3 justify-between rounded-xl border-2 border-primary transition-all cursor-pointer shadow-sm ring-1 ring-primary/10"
+        >
+          <div class="flex items-center gap-4">
+            <div
+              class="text-[#181511] dark:text-primary flex items-center justify-center rounded-lg bg-[#f4f3f0] dark:bg-[#3d3428] shrink-0 size-12"
+            >
+              <span class="material-symbols-outlined text-[24px]">coffee</span>
+            </div>
+            <div class="flex flex-col justify-center">
+              <p
+                class="text-[#181511] dark:text-white text-base font-semibold leading-tight"
+              >
+                Daily reading habit
+              </p>
+              <p
+                class="text-[#897961] dark:text-[#b4a691] text-sm font-normal leading-normal"
+              >
+                Build a consistent routine.
+              </p>
+            </div>
+          </div>
+          <div class="shrink-0 custom-checkbox-tick">
+            <div class="flex size-7 items-center justify-center">
+              <input
+                checked=""
+                class="h-6 w-6 rounded-full border-[#e6e1db] border-2 bg-transparent text-primary checked:bg-primary checked:border-primary focus:ring-0 focus:ring-offset-0 focus:border-primary focus:outline-none transition-colors"
+                name="goal"
+                type="radio"
+              />
+            </div>
+          </div>
+        </div>
+        <!-- Goal 4 -->
+        <div
+          class="flex items-center gap-4 bg-white dark:bg-[#2d251a] px-4 min-h-[88px] py-3 justify-between rounded-xl border-2 border-transparent hover:border-primary/30 transition-all cursor-pointer shadow-sm"
+        >
+          <div class="flex items-center gap-4">
+            <div
+              class="text-[#181511] dark:text-primary flex items-center justify-center rounded-lg bg-[#f4f3f0] dark:bg-[#3d3428] shrink-0 size-12"
+            >
+              <span class="material-symbols-outlined text-[24px]">explore</span>
+            </div>
+            <div class="flex flex-col justify-center">
+              <p
+                class="text-[#181511] dark:text-white text-base font-semibold leading-tight"
+              >
+                Just explore
+              </p>
+              <p
+                class="text-[#897961] dark:text-[#b4a691] text-sm font-normal leading-normal"
+              >
+                No pressure, just enjoy content.
+              </p>
+            </div>
+          </div>
+          <div class="shrink-0 custom-checkbox-tick">
+            <div class="flex size-7 items-center justify-center">
+              <input
+                class="h-6 w-6 rounded-full border-[#e6e1db] border-2 bg-transparent text-primary checked:bg-primary checked:border-primary focus:ring-0 focus:ring-offset-0 focus:border-primary focus:outline-none transition-colors"
+                name="goal"
+                type="radio"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Dropdown Selection -->
+      <div class="mt-10 px-6">
+        <label
+          class="block text-sm font-medium text-[#897961] dark:text-[#b4a691] mb-3"
+          >Daily reading time goal</label
+        >
+        <div class="relative">
+          <select
+            class="w-full bg-white dark:bg-[#2d251a] border-none rounded-lg h-14 px-4 text-[#181511] dark:text-white font-medium focus:ring-2 focus:ring-primary appearance-none cursor-pointer shadow-sm"
+          >
+            <option>5 minutes</option>
+            <option>10 minutes</option>
+            <option selected="">20 minutes</option>
+            <option>30 minutes</option>
+            <option>1 hour</option>
+          </select>
+          <div
+            class="absolute inset-y-0 right-4 flex items-center pointer-events-none"
+          >
+            <span
+              class="material-symbols-outlined text-[#897961] dark:text-[#b4a691]"
+              >expand_more</span
+            >
+          </div>
+        </div>
+      </div>
+      <!-- Footer Button Area -->
+      <div class="mt-auto pt-10 pb-10 px-6">
+        <button
+          class="w-full bg-primary hover:bg-[#d98f24] text-white font-bold py-4 rounded-xl text-lg shadow-lg shadow-primary/20 transition-all active:scale-[0.98]"
+        >
+          Start Reading
+        </button>
+        <p
+          class="text-center text-xs text-[#897961] dark:text-[#b4a691] mt-4 font-normal"
+        >
+          You can change this anytime in settings.
+        </p>
+      </div>
+      <!-- Decorative elements to match warm vibe -->
+      <div
+        class="absolute -bottom-10 -left-10 w-40 h-40 bg-primary/5 rounded-full blur-3xl pointer-events-none"
+      ></div>
+      <div
+        class="absolute top-40 -right-10 w-32 h-32 bg-primary/10 rounded-full blur-2xl pointer-events-none"
+      ></div>
+    </div>
+  </body>
+</html>

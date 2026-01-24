@@ -1,24 +1,82 @@
-import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native';
-import { Stack } from 'expo-router';
-import { StatusBar } from 'expo-status-bar';
-import 'react-native-reanimated';
+import { Stack, router, useSegments } from "expo-router";
+import { useEffect, useState } from "react";
+import { View, ActivityIndicator } from "react-native";
+import { SafeAreaProvider } from "react-native-safe-area-context";
+import {
+  useFonts,
+  Newsreader_400Regular,
+  Newsreader_500Medium,
+  Newsreader_600SemiBold,
+  Newsreader_700Bold,
+  Newsreader_400Regular_Italic,
+} from "@expo-google-fonts/newsreader";
+import * as SplashScreen from "expo-splash-screen";
+import { Session } from "@supabase/supabase-js";
+import { supabase } from "@/lib/supabase";
+import "../global.css";
 
-import { useColorScheme } from '@/hooks/use-color-scheme';
-
-export const unstable_settings = {
-  anchor: '(tabs)',
-};
+SplashScreen.preventAutoHideAsync();
 
 export default function RootLayout() {
-  const colorScheme = useColorScheme();
+  const [session, setSession] = useState<Session | null>(null);
+  const [isAuthReady, setIsAuthReady] = useState(false);
+  const segments = useSegments();
+
+  const [fontsLoaded] = useFonts({
+    Newsreader_400Regular,
+    Newsreader_500Medium,
+    Newsreader_600SemiBold,
+    Newsreader_700Bold,
+    Newsreader_400Regular_Italic,
+  });
+
+  useEffect(() => {
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      setSession(session);
+      setIsAuthReady(true);
+    });
+
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
+      setSession(session);
+    });
+
+    return () => subscription.unsubscribe();
+  }, []);
+
+  useEffect(() => {
+    if (!isAuthReady) return;
+
+    const inAuthFlow = segments[0] === "auth" || segments[0] === "welcome" || segments[0] === "onboarding";
+
+    if (!session && !inAuthFlow) {
+      router.replace("/welcome");
+    } else if (session && (segments[0] === "auth" || segments[0] === "welcome")) {
+      router.replace("/");
+    }
+  }, [session, segments, isAuthReady]);
+
+  useEffect(() => {
+    if (fontsLoaded && isAuthReady) {
+      SplashScreen.hideAsync();
+    }
+  }, [fontsLoaded, isAuthReady]);
+
+  if (!fontsLoaded || !isAuthReady) {
+    return (
+      <View className="flex-1 items-center justify-center bg-background">
+        <ActivityIndicator size="large" color="#ec9213" />
+      </View>
+    );
+  }
 
   return (
-    <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-      <Stack>
-        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-        <Stack.Screen name="modal" options={{ presentation: 'modal', title: 'Modal' }} />
+    <SafeAreaProvider>
+      <Stack screenOptions={{ headerShown: false }}>
+        <Stack.Screen name="index" />
+        <Stack.Screen name="welcome" />
+        <Stack.Screen name="auth" />
+        <Stack.Screen name="onboarding" />
       </Stack>
-      <StatusBar style="auto" />
-    </ThemeProvider>
+    </SafeAreaProvider>
   );
 }
