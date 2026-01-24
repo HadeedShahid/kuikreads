@@ -74,7 +74,8 @@ export default function AuthScreen() {
         if (profileError) {
           Alert.alert("Error", profileError.message);
         } else {
-          Alert.alert("Success", "Check your email for confirmation link");
+          // Navigate to onboarding after successful signup
+          router.replace("/onboarding/reading-goal");
         }
       }
     } else {

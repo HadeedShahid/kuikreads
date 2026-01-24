@@ -7,7 +7,7 @@ import { AppLogo, Text, Button } from "@/components";
 
 export default function WelcomeScreen() {
   const handleGetStarted = () => {
-    router.push("/auth");
+    router.push("/onboarding/reading-goal");
   };
 
   const handleSignIn = () => {

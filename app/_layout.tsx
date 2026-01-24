@@ -46,11 +46,11 @@ export default function RootLayout() {
   useEffect(() => {
     if (!isAuthReady) return;
 
-    const inAuthFlow = segments[0] === "auth" || segments[0] === "welcome";
+    const inAuthFlow = segments[0] === "auth" || segments[0] === "welcome" || segments[0] === "onboarding";
 
     if (!session && !inAuthFlow) {
       router.replace("/welcome");
-    } else if (session && inAuthFlow) {
+    } else if (session && (segments[0] === "auth" || segments[0] === "welcome")) {
       router.replace("/");
     }
   }, [session, segments, isAuthReady]);
@@ -75,6 +75,7 @@ export default function RootLayout() {
         <Stack.Screen name="index" />
         <Stack.Screen name="welcome" />
         <Stack.Screen name="auth" />
+        <Stack.Screen name="onboarding" />
       </Stack>
     </SafeAreaProvider>
   );
