@@ -1,0 +1,340 @@
+<!doctype html>
+
+<html class="light" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>My Reading Library - KuikReads</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              primary: "#ec6613",
+              "background-light": "#fcfaf8",
+              "background-dark": "#221710",
+              "warm-peach": "#fff1e6",
+            },
+            fontFamily: {
+              display: ["Lexend", "sans-serif"],
+            },
+            borderRadius: {
+              DEFAULT: "0.5rem",
+              lg: "1rem",
+              xl: "1.5rem",
+              full: "9999px",
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      .material-symbols-outlined {
+        font-variation-settings:
+          "FILL" 0,
+          "wght" 400,
+          "GRAD" 0,
+          "opsz" 24;
+      }
+      body {
+        font-family: "Lexend", sans-serif;
+      }
+      .stats-gradient {
+        background: linear-gradient(135deg, #fff1e6 0%, #ffffff 100%);
+      }
+      .dark .stats-gradient {
+        background: linear-gradient(135deg, #3d2b20 0%, #221710 100%);
+      }
+    </style>
+    <style>
+      body {
+        min-height: max(884px, 100dvh);
+      }
+    </style>
+  </head>
+  <body
+    class="bg-background-light dark:bg-background-dark text-[#181411] dark:text-[#f4f2f0] antialiased"
+  >
+    <div
+      class="relative mx-auto min-h-screen max-w-md bg-background-light dark:bg-background-dark pb-24"
+    >
+      <!-- Top App Bar -->
+      <header
+        class="flex items-center justify-between p-4 sticky top-0 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md z-10"
+      >
+        <h1 class="text-2xl font-bold tracking-tight">Library</h1>
+        <div class="flex items-center gap-3">
+          <button class="p-2 text-[#897161] dark:text-[#a89385]">
+            <span class="material-symbols-outlined">notifications</span>
+          </button>
+          <div
+            class="size-10 shrink-0 rounded-full border-2 border-primary/20 bg-center bg-no-repeat bg-cover"
+            data-alt="User profile circular avatar portrait"
+            style="
+              background-image: url(&quot;https://lh3.googleusercontent.com/aida-public/AB6AXuCGW4iO4w5RByt3DjbONh6sB43YzB5R8Q5YH3YQOZU4Si-agnjfiJcfP6YMqu4QDD5H3_T56qHHcc4j_S7D2RBJpOEg2v06zE4_0HkK2Pw04G6Hmnh9lGvc7Ed0-TL9RBAVyXtQDD1vUJyuCXBd_iiuGja5tSmlO2MnErKmZGiGHuTSyfHOV2RTcgZOxYMBnundhz2_O9OhEf127tdAQM0QgTbxyGpTeLGYMC_f5UZZKtY6HLCzLIa6SQzS9e2xlD57j-bwK4GsdqI&quot;);
+            "
+          ></div>
+        </div>
+      </header>
+      <!-- Search & Filter -->
+      <div class="px-4 py-2">
+        <div class="flex gap-2">
+          <label
+            class="flex flex-1 items-stretch rounded-xl h-12 bg-white dark:bg-[#2d221b] border border-[#e6dfdb] dark:border-[#3d2b20] shadow-sm"
+          >
+            <div class="flex items-center justify-center pl-4 text-[#897161]">
+              <span class="material-symbols-outlined">search</span>
+            </div>
+            <input
+              class="w-full border-none bg-transparent focus:ring-0 text-base placeholder:text-[#897161] px-3"
+              placeholder="Search your books..."
+            />
+          </label>
+          <button
+            class="flex size-12 items-center justify-center rounded-xl bg-white dark:bg-[#2d221b] border border-[#e6dfdb] dark:border-[#3d2b20] text-[#897161] shadow-sm"
+          >
+            <span class="material-symbols-outlined">tune</span>
+          </button>
+        </div>
+      </div>
+      <!-- Stats Summary Widget -->
+      <div class="p-4">
+        <div
+          class="stats-gradient rounded-xl p-5 border border-[#fff1e6] dark:border-[#3d2b20] shadow-sm"
+        >
+          <h3
+            class="text-sm font-semibold uppercase tracking-wider text-[#897161] mb-4"
+          >
+            Your Progress
+          </h3>
+          <div class="flex justify-between items-center">
+            <div
+              class="text-center flex-1 border-r border-[#e6dfdb] dark:border-[#3d2b20]"
+            >
+              <p class="text-2xl font-bold text-primary">12</p>
+              <p class="text-[10px] font-medium text-[#897161] uppercase">
+                Read
+              </p>
+            </div>
+            <div
+              class="text-center flex-1 border-r border-[#e6dfdb] dark:border-[#3d2b20]"
+            >
+              <p class="text-2xl font-bold text-primary">45</p>
+              <p class="text-[10px] font-medium text-[#897161] uppercase">
+                Streak
+              </p>
+            </div>
+            <div class="text-center flex-1">
+              <p class="text-2xl font-bold text-primary">320</p>
+              <p class="text-[10px] font-medium text-[#897161] uppercase">
+                WPM
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Continue Reading Section -->
+      <div class="px-4 pb-6">
+        <h2 class="text-lg font-bold mb-3 flex items-center gap-2">
+          <span class="material-symbols-outlined text-primary text-xl"
+            >auto_stories</span
+          >
+          Continue Reading
+        </h2>
+        <div
+          class="flex items-stretch gap-4 rounded-xl bg-white dark:bg-[#2d221b] p-4 shadow-md border border-[#f4f2f0] dark:border-[#3d2b20]"
+        >
+          <div
+            class="w-24 shrink-0 bg-center bg-no-repeat aspect-[2/3] bg-cover rounded-lg shadow-sm"
+            data-alt="Book cover of The Great Gatsby"
+            style="
+              background-image: url(&quot;https://lh3.googleusercontent.com/aida-public/AB6AXuBliuSpVqzW2O3po8l4D8rjI6D99IUZJNuHoqAbHfYIMt4lMGvuChKyvI-AE4yLpz0bnkwP4Alvjj_8fDy2tEGWIq7dfikk4_6VndDlGML1BnX7X1IVR5M-Ej-3Jmollc-L-RovsdF31mGRho_uG-cEcnakG_I7uo8LHkxDOLKLjp6fEnusDk5rq6WULHZLOKiZs77yeizAkHb18SmbrrDGR3mITKfYSVLQDyLtPtEcpw4DH1-_LfywdT46h-XJvaxvMSYCCcWW7Ag&quot;);
+            "
+          ></div>
+          <div class="flex flex-col justify-between flex-1 py-1">
+            <div>
+              <p class="text-primary text-xs font-bold uppercase tracking-wide">
+                65% Completed
+              </p>
+              <p
+                class="text-[#181411] dark:text-white text-lg font-bold leading-tight mt-1"
+              >
+                The Great Gatsby
+              </p>
+              <p class="text-[#897161] dark:text-[#a89385] text-sm font-medium">
+                F. Scott Fitzgerald
+              </p>
+            </div>
+            <div class="mt-4">
+              <div
+                class="w-full bg-[#f4f2f0] dark:bg-[#3d2b20] h-1.5 rounded-full mb-3"
+              >
+                <div
+                  class="bg-primary h-full rounded-full"
+                  style="width: 65%"
+                ></div>
+              </div>
+              <button
+                class="flex w-full cursor-pointer items-center justify-center gap-2 rounded-lg h-10 bg-primary text-white text-sm font-bold shadow-sm transition-transform active:scale-95"
+              >
+                <span class="material-symbols-outlined text-lg"
+                  >play_arrow</span
+                >
+                Resume Reading
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Filters Horizontal Scrolling -->
+      <div
+        class="flex items-center gap-2 overflow-x-auto px-4 mb-4 no-scrollbar"
+      >
+        <button
+          class="whitespace-nowrap rounded-full bg-primary px-5 py-2 text-sm font-bold text-white"
+        >
+          All Books
+        </button>
+        <button
+          class="whitespace-nowrap rounded-full bg-white dark:bg-[#2d221b] border border-[#e6dfdb] dark:border-[#3d2b20] px-5 py-2 text-sm font-medium text-[#897161]"
+        >
+          In Progress
+        </button>
+        <button
+          class="whitespace-nowrap rounded-full bg-white dark:bg-[#2d221b] border border-[#e6dfdb] dark:border-[#3d2b20] px-5 py-2 text-sm font-medium text-[#897161]"
+        >
+          To Read
+        </button>
+        <button
+          class="whitespace-nowrap rounded-full bg-white dark:bg-[#2d221b] border border-[#e6dfdb] dark:border-[#3d2b20] px-5 py-2 text-sm font-medium text-[#897161]"
+        >
+          Finished
+        </button>
+      </div>
+      <!-- Book Grid -->
+      <div class="grid grid-cols-2 gap-4 px-4">
+        <!-- Book 1 -->
+        <div class="flex flex-col gap-2">
+          <div
+            class="aspect-[2/3] w-full rounded-xl bg-center bg-no-repeat bg-cover shadow-sm border border-black/5"
+            data-alt="Modern book cover with abstract minimalist art"
+            style="
+              background-image: url(&quot;https://lh3.googleusercontent.com/aida-public/AB6AXuDnRUbcarLt6wd33tpMazfbvmcJhVsUUHElveSZbnIKuS8l76R0S1Dvl12uHp30usRTcDSCLarBmnss0W5Of-0wIp9GR1HobO6MhS7ONbkxCJVTA1PckgrwQqZ1H8UVrBsLyiLmMkrRmYaY5lrwUKKxI3ZcOkDmNCflSvO5e7EgD0CU5tLfYFvpKYExgJ7NsZ_3leCa3EYvI4d55Q9b9B8w4htIJOz1S9ADpsTzVbZAWihClgg8pHYo3STT0X28HFQMRR6UWxLOQ7I&quot;);
+            "
+          ></div>
+          <div>
+            <h4
+              class="text-sm font-bold text-[#181411] dark:text-white line-clamp-1"
+            >
+              Atomic Habits
+            </h4>
+            <p class="text-xs text-[#897161] dark:text-[#a89385]">
+              James Clear
+            </p>
+          </div>
+        </div>
+        <!-- Book 2 -->
+        <div class="flex flex-col gap-2">
+          <div
+            class="aspect-[2/3] w-full rounded-xl bg-center bg-no-repeat bg-cover shadow-sm border border-black/5"
+            data-alt="Book cover for Dune showing desert landscapes"
+            style="
+              background-image: url(&quot;https://lh3.googleusercontent.com/aida-public/AB6AXuAWNnDfqSF3UsaGUn-DqvBBrTXcWbA4GFJEe5wnnqHmMnh8rMCQB2wK9uqwR-4N9eJLOH1qniv6Z6nQZEgf1CLP6EnZ7tI368iLCTe0SXZSM_tlBxWmDPQpkI3S_KR0dx857ET3Fd0L2IsWRF_IZh_9RuhgCa2CFXXBXcEyjx-9Mae51GXpkrE8CXeUzMkHCFaWDNVoZewESjfk0rGhf4MOPsQ06aQsT4T-fyKYKVxIVZvvYX4Nai5gr04fvyuy7EW7uNssYgmZqQU&quot;);
+            "
+          ></div>
+          <div>
+            <h4
+              class="text-sm font-bold text-[#181411] dark:text-white line-clamp-1"
+            >
+              Dune: Part One
+            </h4>
+            <p class="text-xs text-[#897161] dark:text-[#a89385]">
+              Frank Herbert
+            </p>
+          </div>
+        </div>
+        <!-- Book 3 -->
+        <div class="flex flex-col gap-2">
+          <div
+            class="aspect-[2/3] w-full rounded-xl bg-center bg-no-repeat bg-cover shadow-sm border border-black/5"
+            data-alt="Book cover for Deep Work by Cal Newport"
+            style="
+              background-image: url(&quot;https://lh3.googleusercontent.com/aida-public/AB6AXuCaxK3owDpOVKNRKuWUR7v6jpP-pJFoIiAI0u9hKXf3Nuk772lUsHmOxYZ6-eDYKV-vOrEY6OubRsWeSb8d_IXYfR3_pU5xiHqLJfb4iYmpj2kS3aQ2FIPo9xM_ng3-aCR2RbWd3RInx3xYa5t-vXafvNdV6T1xMgms-N3sCsEB220_eB9mZ7Vl4Hf3JehabLjIAU5M5I9nCfuOuofdxRmO7EbwQBX6OJLpfQq6xIll-yezAr-HWQrDQnXThoucZjittXsOENgZ9VU&quot;);
+            "
+          ></div>
+          <div>
+            <h4
+              class="text-sm font-bold text-[#181411] dark:text-white line-clamp-1"
+            >
+              Deep Work
+            </h4>
+            <p class="text-xs text-[#897161] dark:text-[#a89385]">
+              Cal Newport
+            </p>
+          </div>
+        </div>
+        <!-- Book 4 -->
+        <div class="flex flex-col gap-2">
+          <div
+            class="aspect-[2/3] w-full rounded-xl bg-center bg-no-repeat bg-cover shadow-sm border border-black/5"
+            data-alt="Minimalist book cover for Norwegian Wood"
+            style="
+              background-image: url(&quot;https://lh3.googleusercontent.com/aida-public/AB6AXuDfzz6hSZSNfmWV0XaurTcSJjKBxwVPlFtX4C0agrrubxuG_e3UFO5k9VvJWHbOvbo0P7dRo3hPHknndFElHJQOG6S9NX96ilRkxaiDvVqvSliFN0Ag3khQ_cz-s1-hbWMxZ5Kj5qHHnEO7YL2ULGhYG-S3SdNxWQIdTTO_h0mxp4d3mX5JmLixqlkaLBtz9iSkXEcmW2ivfERBahtxje7WXy03NzJPsuGKn17-z5acRoSOY38XjO_A2AMtOJrDV8luWbDU3sUOjGA&quot;);
+            "
+          ></div>
+          <div>
+            <h4
+              class="text-sm font-bold text-[#181411] dark:text-white line-clamp-1"
+            >
+              Norwegian Wood
+            </h4>
+            <p class="text-xs text-[#897161] dark:text-[#a89385]">
+              Haruki Murakami
+            </p>
+          </div>
+        </div>
+      </div>
+      <!-- Floating Action Button -->
+      <button
+        class="fixed bottom-8 right-6 flex size-14 items-center justify-center rounded-full bg-primary text-white shadow-lg shadow-primary/40 transition-transform active:scale-90 z-20"
+      >
+        <span class="material-symbols-outlined text-3xl">add</span>
+      </button>
+      <!-- Bottom Navigation (Simplified iOS Style) -->
+      <nav
+        class="fixed bottom-0 left-0 right-0 max-w-md mx-auto h-20 bg-white/90 dark:bg-[#221710]/90 backdrop-blur-lg border-t border-[#e6dfdb] dark:border-[#3d2b20] flex items-center justify-around px-4 pb-2 z-10"
+      >
+        <div class="flex flex-col items-center gap-1 text-primary">
+          <span class="material-symbols-outlined">library_books</span>
+          <span class="text-[10px] font-bold">Library</span>
+        </div>
+        <div class="flex flex-col items-center gap-1 text-[#897161]">
+          <span class="material-symbols-outlined">bolt</span>
+          <span class="text-[10px] font-medium">Quick Read</span>
+        </div>
+        <div class="flex flex-col items-center gap-1 text-[#897161]">
+          <span class="material-symbols-outlined">explore</span>
+          <span class="text-[10px] font-medium">Discover</span>
+        </div>
+        <div class="flex flex-col items-center gap-1 text-[#897161]">
+          <span class="material-symbols-outlined">settings</span>
+          <span class="text-[10px] font-medium">Settings</span>
+        </div>
+      </nav>
+    </div>
+  </body>
+</html>
